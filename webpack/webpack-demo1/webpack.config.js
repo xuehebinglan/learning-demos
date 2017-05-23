@@ -14,7 +14,9 @@ module.exports = {
         new htmlWebpackPlugin({
             filename: 'new.html',
             template: 'index.html',
-            inject: 'head'
+            inject: 'head',
+            title: "this is plugin's title",
+            date: new Date(),
         })
     ]
 }

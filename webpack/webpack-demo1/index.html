@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<title>webpack demo for real project???</title>
+	<title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-	<script scr="bundle.js">
-		
-	</script>
+	<%= htmlWebpackPlugin.options.date %>
+
+	<% for (var key in htmlWebpackPlugin.files) {%>
+		<%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files[key])%>
+	<% }%>
+
+	<% for (var key in htmlWebpackPlugin.options) {%>
+		<%= key %> : <%= JSON.stringify(htmlWebpackPlugin.options[key])%>
+	<% }%>
 </body>
 </html>

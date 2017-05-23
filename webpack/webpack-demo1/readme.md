@@ -93,7 +93,59 @@ plugins: [
         new htmlWebpackPlugin({
             filename: 'new.html',
             template: 'index.html',
-            inject: 'head'
+            inject: 'head',
+            title: 'this is the plugin's title',
         })
     ]
 ```
+
+
+## 3.【3-2】自动化生成html
+
+
+- 在htmlWebpackPlugin里面放的对象，都可以放到模版里面进行引用。
+
+```
+ plugins: [
+        new htmlWebpackPlugin({
+            filename: 'new.html',
+            template: 'index.html',
+            inject: 'head',
+            title: "this is plugin's title",
+            date: new Date(),
+        })
+    ]
+```
+- 如上，模版是index.html
+
+```
+<%= htmlWebpackPlugin.options.title %>
+```
+
+- 在index.html里面加上上面的代码，就可以用到plugins里面的title。
+- `new Date()`这种都可以诶
+
+
+- ### for循环
+
+```
+<% for (var key in htmlWebpackPlugin) {%>
+    <%= key %>
+<% }%>
+```
+
+
+-  `<% %>` 这是模板语法
+
+- `<%= %>` 加上=相当于 输出 的感觉
+
+```
+<% for (var key in htmlWebpackPlugin.files) {%>
+        <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files[key])%>
+    <% }%>
+
+    <% for (var key in htmlWebpackPlugin.options) {%>
+        <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.options[key])%>
+    <% }%>
+```
+
