@@ -7,12 +7,14 @@ module.exports = {
         a: './src/script/a.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist/js'),
-        filename: '[name]-[chunkhash].js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/[name]-[chunkhash].js'
     },
     plugins: [
         new htmlWebpackPlugin({
-            template: 'index.html'
+            filename: 'new.html',
+            template: 'index.html',
+            inject: 'head'
         })
     ]
 }

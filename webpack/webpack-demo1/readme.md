@@ -83,3 +83,17 @@ plugins: [
     ]
 ```
 相当于以根目录下的index.html为模板，把main.js和a.js给引用进去到指定目录下的index.html中（这块是因为htmlwebpackplugin才有的index.html吗）
+
+- `filename` 是生成的文件名，默认不写，应该是index.html
+- `template` 是应用的模版
+- `inject` 是选择插入在头部，还是body 
+
+```
+plugins: [
+        new htmlWebpackPlugin({
+            filename: 'new.html',
+            template: 'index.html',
+            inject: 'head'
+        })
+    ]
+```
