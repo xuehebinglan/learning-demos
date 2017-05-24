@@ -94,7 +94,7 @@ plugins: [
             filename: 'new.html',
             template: 'index.html',
             inject: 'head',
-            title: 'this is the plugin's title',
+            title: 'this is the plugin's title'
         })
     ]
 ```
@@ -103,9 +103,9 @@ plugins: [
 ## 3.【3-2】自动化生成html
 
 
-- 在htmlWebpackPlugin里面放的对象，都可以放到模版里面进行引用。
+- ### 一、 在htmlWebpackPlugin里面放的对象，都可以放到模版里面进行引用。
 
-```
+```js
  plugins: [
         new htmlWebpackPlugin({
             filename: 'new.html',
@@ -118,7 +118,7 @@ plugins: [
 ```
 - 如上，模版是index.html
 
-```
+```js
 <%= htmlWebpackPlugin.options.title %>
 ```
 
@@ -126,9 +126,9 @@ plugins: [
 - `new Date()`这种都可以诶
 
 
-- ### for循环
+- ### 二、 for循环
 
-```
+```js
 <% for (var key in htmlWebpackPlugin) {%>
     <%= key %>
 <% }%>
@@ -139,7 +139,7 @@ plugins: [
 
 - `<%= %>` 加上=相当于 输出 的感觉
 
-```
+```js
 <% for (var key in htmlWebpackPlugin.files) {%>
         <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files[key])%>
     <% }%>
@@ -148,4 +148,39 @@ plugins: [
         <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.options[key])%>
     <% }%>
 ```
+
+- ### 三、如何将a.js 和main.js分别放在head和body
+1. 在头部放入 `<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>`
+2. body里面放入`<script src="<%= htmlWebpackPlugin.files.chunks.a.entry %>"></script>`
+3. package.json文件里面,`inject:false`
+
+- ### 四、 output里面的publicPath可以为整体增加路径
+
+```js
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/[name]-[chunkhash].js',
+        publicPath: 'http://cdn.com/'
+    },
+```
+
+```html
+<script src="http://cdn.com/js/main-b478c90d30da7bbc9444.js"></script>
+```
+也就是如果我想增加我的域名，就可以啦
+
+- ### 五、 给plugin增加 minify 格式化
+
+```
+    minify: {
+        removeComments: true,
+        collapseWhitespace: true
+    }
+```
+
+`removeComments`删除注释
+`collapseWhitespace`删除空格
+
+- 
+
 

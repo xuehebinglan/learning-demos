@@ -3,16 +3,14 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title><%= htmlWebpackPlugin.options.title %></title>
+	<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </head>
 <body>
 	<%= htmlWebpackPlugin.options.date %>
+	<!-- 我是一行注释-->
+	<script src="<%= htmlWebpackPlugin.files.chunks.a.entry %>"></script>
 
-	<% for (var key in htmlWebpackPlugin.files) {%>
-		<%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files[key])%>
-	<% }%>
 
-	<% for (var key in htmlWebpackPlugin.options) {%>
-		<%= key %> : <%= JSON.stringify(htmlWebpackPlugin.options[key])%>
-	<% }%>
+	
 </body>
 </html>

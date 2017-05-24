@@ -8,15 +8,20 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name]-[chunkhash].js'
+        filename: 'js/[name]-[chunkhash].js',
+        publicPath: 'http://cdn.com/'
     },
     plugins: [
         new htmlWebpackPlugin({
             filename: 'new.html',
             template: 'index.html',
-            inject: 'head',
+            inject: false,
             title: "this is plugin's title",
             date: new Date(),
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true
+            }
         })
     ]
 }
