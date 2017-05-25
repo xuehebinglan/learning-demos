@@ -1,0 +1,71 @@
+[33mcommit 2d66bd90032d581e7ed80446401dc4b6a8730617[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Thu May 25 17:38:32 2017 +0800
+
+    add a [toc]
+
+[33mcommit 38268ae0a3ddedeaf83f06de3a52488c838264dd[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Thu May 25 17:31:50 2017 +0800
+
+    finished learning 3-3 自动化生成html页面
+
+[33mcommit b069c7ed90cc207279048b38eeb88785a75517bb[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Wed May 24 20:21:10 2017 +0800
+
+    after learning 3-2
+
+[33mcommit c9cbc0fbacf23816cc1b280de05840913eab3dbb[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Tue May 23 20:38:48 2017 +0800
+
+    a commit for the end of 20170523 to get out of company 20:38
+
+[33mcommit e125230c8cca1faa8c7f3d1fe352e91ce18d6327[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Tue May 23 19:22:37 2017 +0800
+
+    after learning 3-1
+
+[33mcommit b497c65dbc889ecfd66f5e8782d0f8325e566d05[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Tue May 23 19:13:49 2017 +0800
+
+    3-1 9:04 index.html在dist/js里面
+
+[33mcommit 22d9efd3507e7b59764f7470f3b3783bbffbdeb6[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Mon May 22 16:57:51 2017 +0800
+
+    after learning 2-2
+
+[33mcommit cd68463aa176437c69e8265115ba31017b8b8061[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Mon May 22 12:08:58 2017 +0800
+
+    fixed the webpack.config.js for webpack2.2
+
+[33mcommit 39c023f9aaf1a07561cf38435371c1fe5f3fba7d[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Fri May 19 20:36:54 2017 +0800
+
+    config webpack
+
+[33mcommit 56aa9fb9e7935bd37345808436230a50dd994647[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Fri May 19 19:35:12 2017 +0800
+
+    first webpack demo learning with imoocwebsite
+
+[33mcommit 03b6a96efb9c0ca89665a5b5562cd81a06c1317a[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Tue May 16 18:50:42 2017 +0800
+
+    my first react demo
+
+[33mcommit 75fb8d85fe6f494bfd1b129c64cce3def9553ae4[m
+Author: xuehebinglan <785529534@qq.com>
+Date:   Tue May 16 18:47:11 2017 +0800
+
+    Initial commit
