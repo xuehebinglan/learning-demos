@@ -1,4 +1,4 @@
-
+[toc]
 > learning on the imooc website  to config webpack for real project
 
 # 配置笔记
