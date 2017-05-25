@@ -171,7 +171,7 @@ plugins: [
 
 - ### 五、 给plugin增加 minify 格式化
 
-```
+```js
     minify: {
         removeComments: true,
         collapseWhitespace: true
@@ -181,6 +181,85 @@ plugins: [
 `removeComments`删除注释
 `collapseWhitespace`删除空格
 
-- 
+
+## 3.【3-3】自动化生成html--多页面
+
+- ### 一、如何生成多个html
+    ```js
+     plugins: [
+        new htmlWebpackPlugin({
+            filename: 'a.html',
+            template: 'index.html',
+            inject: 'body',
+            title: 'this is a.html',
+            date: new Date(),
+            chunks: ['main', 'a']
+        }),
+        new htmlWebpackPlugin({
+            filename: 'b.html',
+            template: 'index.html',
+            inject: 'body',
+            title: 'this is b.html',
+            date: new Date(),
+            chunks: ['main', 'b']
+        }),
+        new htmlWebpackPlugin({
+            filename: 'c.html',
+            template: 'index.html',
+            inject: 'body',
+            title: 'this is c.html',
+            date: new Date(),
+            chunks: ['main', 'c']
+        })
+    ]
+    ```
+- 在plugin里面插入多个new，因为plugin里面是个数组，所以有几个就可以生成几个。
+
+- #### `filename` 用来改变名字
+- #### `chunks` 用来改变对应的文件，chunk里面有几个，对应的就会在那个html插入哪个文件。
+- 此处对应的是 entry里的对象名，`entry`和`chunks`对应。
+- #### `excludeChunks` 意思是排除了哪个其他都包含。
+- #### 此处应该注意，`index.html`这个文件里面，应该将之前有关chunks的引用语句去掉，否则会报错。可以长成如下。
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>   
+</head>
+<body>
+    <%= htmlWebpackPlugin.options.date %>
+    <!-- 我是一行注释-->  
+</body>
+</html>
+```
+
+- #### 如果不想要publicPath这个前缀，则需要如下(20:22)：
+```
+<%= htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length) %>
+```
+上面的是会生成`js/main-e1e7b6a0d2e8593d0d16.js`
+
+
+如果是下面的
+```
+<%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+```
+
+则会将main.js里面的所有代码直接插入指定的位置。
+
+
+- #### 如果想要让每个html头文件插入main.js的源代码就用上面的，如果同时希望用src的方式分别插入 `a.js`, `b.js`, `c.js`则需要如下配置：
+- 首先，`inject:false`
+- 其次，在制定的位置插入如下代码：
+
+```
+<% for (var k in htmlWebpackPlugin.files.chunks) { %>
+    <% if (k !== 'main') { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[k].entry %>"></script>
+    <% } %>
+<% } %>
+```
+那么就会在a.html里面生成a.js，b.html里面有b.js
 
 

@@ -71,6 +71,7 @@
 /***/ (function(module, exports) {
 
 function a() {
+    alert("a.js");
 }
 
 /***/ })

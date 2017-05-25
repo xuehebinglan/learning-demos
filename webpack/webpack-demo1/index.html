@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<title><%= htmlWebpackPlugin.options.title %></title>
-	<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+	<title><%= htmlWebpackPlugin.options.title %></title>	
+	<script>
+		<%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+	</script>
 </head>
 <body>
 	<%= htmlWebpackPlugin.options.date %>
-	<!-- 我是一行注释-->
-	<script src="<%= htmlWebpackPlugin.files.chunks.a.entry %>"></script>
+	<!-- 我是一行注释-->	
 
+	<% for (var k in htmlWebpackPlugin.files.chunks) { %>
+		<% if (k !== 'main') { %>
+		<script src="<%= htmlWebpackPlugin.files.chunks[k].entry %>"></script>
+		<% } %>
+	<% } %>
 
-	
 </body>
 </html>
